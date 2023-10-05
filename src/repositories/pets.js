@@ -8,23 +8,32 @@ class PetRepository
         return pets;
     };
 
-    async GetPetById(id)
+    async GetPetById(id, transaction)
     {
-        const pet = Pets.findByPk(id);
+        const pet = Pets.findOne(
+            {
+                where: {id},
+                include: ['client'],
+            },
+            {transaction}
+        );
         return pet;
     };
 
-    async CreatePet(data)
+    async CreatePet(data, transaction)
     {
-        Pets.create({
-            name: data.name,
-            description: data.description,
-            id_client: data.id_client,
-            createdAt: new Date()
-        });          
+        Pets.create(
+            {
+                name: data.name,
+                description: data.description,
+                id_client: data.id_client,
+                createdAt: new Date(),
+            },
+            {transaction}
+        );          
     };
 
-    async UpdatePet(id, data)
+    async UpdatePet(id, data, transaction)
     {
         Pets.update(
             {
@@ -33,18 +42,16 @@ class PetRepository
                 id_client: data.id_client,
                 updatedAt: new Date().toLocaleString()
             }, 
-            {
-                where: {id: id}
-            }
+            {where: {id}},
+            {transaction}
         );
     };
     
-    async DeletePet(id)
+    async DeletePet(id, transaction)
     {
         Pets.destroy(
-            {
-                where: {id: id}
-            }
+            {where: {id}},
+            {transaction}
         );          
     };
 };

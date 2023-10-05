@@ -10,27 +10,27 @@ class ClientServices
         return clients;
     }
 
-    async GetClientById(id)
+    async GetClientById(id, transaction)
     {
-        const client = repositories.GetClientById(id); 
+        const client = repositories.GetClientById(id, transaction); 
         return client;
     }
 
-    async CreateClient(data)
+    async CreateClient(data, transaction)
     {
-        const result = repositories.CreateClient(data);
+        const result = repositories.CreateClient(data, transaction);
         return result;
     }
 
-    async UpdateClient(id, data)
+    async UpdateClient(id, data, transaction)
     {
-        const result = repositories.UpdateClient(id, data);
+        const result = repositories.UpdateClient(id, data, transaction);
         return result;
     }
 
-    async DeleteClient(id)
+    async DeleteClient(id, transaction)
     {
-        const result = repositories.DeleteClient(id);
+        const result = repositories.DeleteClient(id, transaction);
         return result;
     }
 }

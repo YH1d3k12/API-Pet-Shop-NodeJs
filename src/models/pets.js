@@ -1,11 +1,20 @@
 const { DataTypes } = require('sequelize');
 const sequelize = require('../database/database.js');
+const Clients = require('./clients.js');
 
 const Pets = sequelize.define('pets', {
     id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
         autoIncrement: true,
+    },
+    idClient: {
+        field: 'id_client',
+        type: DataTypes.INTEGER,
+        references: {
+            model: Clients,
+            key: 'id'
+        }
     },
     name: { 
         type: DataTypes.STRING(150),
@@ -23,9 +32,5 @@ const Pets = sequelize.define('pets', {
         type: DataTypes.DATE
     }
 }, {});
-
-Pet.associate = (models) => {
-    Pet.belongsTo(models.Client, { foreignKey: 'id_client', allowNull: false });
-};
 
 module.exports = Pets;

@@ -8,22 +8,32 @@ class ClientRepository
         return clients;
     };
 
-    async GetClientById(id)
+    async GetClientById(id, transaction)
     {
-        const client = Clients.findByPk(id);
+        const client = Clients.findOne(
+            {
+                where: {id},
+                include: ['pets'],
+            },
+            {transaction}
+        );
+
         return client;
     };
 
-    async CreateClient(data)
+    async CreateClient(data, transaction)
     {
-        Clients.create({
-            name: data.name,
-            phone: data.phone,
-            createdAt: new Date(),
-        });          
+        Clients.create(
+            {
+                name: data.name,
+                phone: data.phone,
+                createdAt: new Date(),
+            }, 
+            {transaction}
+        );          
     };
 
-    async UpdateClient(id, data)
+    async UpdateClient(id, data, transaction)
     {
         Clients.update(
             {
@@ -31,18 +41,16 @@ class ClientRepository
                 phone: data.phone,
                 updatedAt: new Date().toLocaleString()
             }, 
-            {
-                where: {id: id}
-            }
+            {where: {id}},
+            {transaction}
         );
     };
     
-    async DeleteClient(id)
+    async DeleteClient(id, transaction)
     {
         Clients.destroy(
-            {
-                where: {id: id}
-            }
+            {where: {id}},
+            {transaction}
         );          
     };
 };

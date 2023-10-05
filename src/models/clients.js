@@ -25,8 +25,7 @@ const Clients = sequelize.define('clients', {
     },
 }, {});
 
-Clients.associate = (models) => {
-    Clients.hasMany(models.Pets, { as: 'pets', foreignKey: 'id_client' });
-};
+Pets.belongsTo(Clients, {foreignKey: 'id_client', allowNull: false });
+Clients.hasMany(Pets, {foreignKey: 'id_client'});
 
 module.exports = Clients;
