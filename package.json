@@ -1,0 +1,28 @@
+{
+    "name": "api-pet-shop-nodejs",
+    "version": "1.0.0",
+    "description": "",
+    "main": "app.js",
+    "scripts": {
+        "start": "npx nodemon src/app.js",
+        "test": "jest --testMatch='**/*.test.js'",
+        "test:cov": "jest --testMatch='**/*.test.js' --coverage"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/YH1d3k12/API-Pet-Shop-NodeJs.git"
+    },
+    "author": "Djalma Hideki Yamamoto",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/YH1d3k12/API-Pet-Shop-NodeJs/issues"
+    },
+    "homepage": "https://github.com/YH1d3k12/API-Pet-Shop-NodeJs#readme",
+    "dependencies": {
+        "cors": "^2.8.5",
+        "dotenv": "^16.3.1",
+        "express": "^4.18.2",
+        "mysql2": "^3.6.1",
+        "sequelize": "^6.33.0"
+    }
+}
