@@ -1,9 +1,9 @@
 const { Sequelize } = require('sequelize');
 const { development } = require('../config.js');
 
-const sequelize = new Sequelize(development);
+const db = new Sequelize(development);
 
-sequelize.sync()
+db.sync()
     .then(() => {
         console.log('Connection successfull');
     })
@@ -11,4 +11,4 @@ sequelize.sync()
         console.error(err.message);
     });
 
-module.exports = sequelize;
+module.exports = db;
