@@ -13,7 +13,7 @@ describe('Testing client services', () => {
         console.info('Starting TDD test with Jest!');
     });
 
-    afterAll(() => {
+    afterAll(async () => {
         this.transaction.rollback();
         console.info('Ending all tests');
     });
