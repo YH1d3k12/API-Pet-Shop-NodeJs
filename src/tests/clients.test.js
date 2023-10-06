@@ -40,7 +40,7 @@ describe('Testing client services', () => {
             phone: '6666-6666'
         }, this.transaction);
 
-        expect(result.name).toBe('Karthagamodeus Stormrage of Evenfell');
+        expect(result.name).toBe('Karthagamodeus Stormrage of Evenfell The Third Teen');
         expect(result.phone).toBe('6666-6666');
     });
 

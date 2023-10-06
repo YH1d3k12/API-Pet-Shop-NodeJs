@@ -1,4 +1,7 @@
 const ClientRepository = require('../repositories/clients.js');
+const DataValidation = require('../utils/validation.js');
+
+const verify = new DataValidation();
 
 const repositories = new ClientRepository();
 
@@ -12,12 +15,16 @@ class ClientServices
 
     async GetClientById(id, transaction)
     {
+        verify.isIdValid(id);
+
         const client = repositories.GetClientById(id, transaction); 
         return client;
     }
 
     async CreateClient(data, transaction)
     {
+        verify.isItEmpty(data.name, data.phone);
+
         const result = repositories.CreateClient(data, transaction);
         return result;
     }
@@ -30,6 +37,8 @@ class ClientServices
 
     async DeleteClient(id, transaction)
     {
+        verify.isIdValid(id);
+
         const result = repositories.DeleteClient(id, transaction);
         return result;
     }
