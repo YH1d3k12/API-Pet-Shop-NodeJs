@@ -17,10 +17,12 @@ const Clients = db.define('clients', {
         allowNull: false
     },
     createdAt: {
+        field: 'created_at',
         type: DataTypes.DATE,
         allowNull: false
     },
     updatedAt: {
+        field: 'updated_at',
         type: DataTypes.DATE
     },
 }, {});

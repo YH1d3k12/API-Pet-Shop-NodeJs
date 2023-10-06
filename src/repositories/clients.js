@@ -27,7 +27,7 @@ class ClientRepository
             {
                 name: data.name,
                 phone: data.phone,
-                createdAt: new Date(),
+                created_at: new Date()
             }, 
             {transaction}
         );          
@@ -39,7 +39,7 @@ class ClientRepository
             {
                 name: data.name,
                 phone: data.phone,
-                updatedAt: new Date().toLocaleString()
+                updated_at: new Date().toLocaleString()
             }, 
             {where: {id}},
             {transaction}

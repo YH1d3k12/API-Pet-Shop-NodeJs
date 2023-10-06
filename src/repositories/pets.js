@@ -27,7 +27,7 @@ class PetRepository
                 name: data.name,
                 description: data.description,
                 id_client: data.id_client,
-                createdAt: new Date(),
+                created_at: new Date(),
             },
             {transaction}
         );          
@@ -40,7 +40,7 @@ class PetRepository
                 name: data.name,
                 description: data.description,
                 id_client: data.id_client,
-                updatedAt: new Date().toLocaleString()
+                updated_at: new Date().toLocaleString()
             }, 
             {where: {id}},
             {transaction}
