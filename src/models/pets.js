@@ -25,10 +25,12 @@ const Pets = db.define('pets', {
         allowNull: false
     },
     createdAt: {
+        field: 'created_at',
         type: DataTypes.DATE,
         allowNull: false
     },
     updatedAt: {
+        field: 'updated_at',
         type: DataTypes.DATE
     }
 }, {});
