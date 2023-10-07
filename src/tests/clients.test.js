@@ -36,11 +36,11 @@ describe('Testing client services', () => {
     // testing post method
     it('Should create one client', async () => {
         const result = await service.CreateClient({
-            name: 'Karthagamodeus Stormrage of Evenfell',
+            name: 'Karthagamodeus Stormrage of Evenfell The Third',
             phone: '6666-6666'
         }, this.transaction);
 
-        expect(result.name).toBe('Karthagamodeus Stormrage of Evenfell The Third Teen');
+        expect(result.name).toBe('Karthagamodeus Stormrage of Evenfell The Third');
         expect(result.phone).toBe('6666-6666');
     });
 
