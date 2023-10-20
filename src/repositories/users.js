@@ -1,4 +1,7 @@
 const Users = require('../models/users.js');
+const DataEncrypter = require('../utils/encrypter.js');
+
+const encrypter = new DataEncrypter();
 
 
 class UserRepository {
@@ -21,25 +24,30 @@ class UserRepository {
 
 
     async CreateUser(data, transaction) {
+        const hashedPassword = await encrypter.HashPassword(data.password);
+
+        console.log("After hash", hashedPassword)
+
         const user = await Users.create(
             {
                 role: data.role,
                 email: data.email,
-                password: data.password,
+                password: hashedPassword,
                 created_at: new Date()
             },
             { transaction }
         );
-        console.log("REPOSITORI", user)
         return user;
     };
 
 
     async UpdateUser(id, data, transaction) {
+        const hashedPassword = await encrypter.HashPassword(data.password);
+
         Users.update(
             {
                 email: data.email,
-                password: data.password,
+                password: hashedPassword,
                 updated_at: new Date().toLocaleString()
             },
             { where: { id } },
