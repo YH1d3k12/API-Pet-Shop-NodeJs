@@ -1,7 +1,10 @@
 const { DataTypes } = require('sequelize');
+
 const db = require('../database/database.js');
+
 const Veterinarians = require('./veterinarians.js');
 const Pets = require('./pets.js');
+
 
 const Appointments = db.define('appointments', {
     id: {
@@ -33,21 +36,22 @@ const Appointments = db.define('appointments', {
         type: DataTypes.DATE,
         allowNull: false
     },
-    createdAt: {
+    created_at: {
         field: 'created_at',
         type: DataTypes.DATE,
         allowNull: false
     },
-    updatedAt: {
+    updated_at: {
         field: 'updated_at',
         type: DataTypes.DATE
     },
 }, {});
 
-Appointments.belongsTo(Pets, {foreignKey: 'id_pet', allowNull: false });
-Pets.hasMany(Appointments, {foreignKey: 'id_pet', allowNull: false });
 
-Appointments.belongsTo(Veterinarians, {foreignKey: 'id_veterinarian', allowNull: false });
-Veterinarians.hasMany(Appointments, {foreignKey: 'id_veterinarian', allowNull: false });
+Appointments.belongsTo(Pets, { foreignKey: 'id_pet', allowNull: false });
+Pets.hasMany(Appointments, { foreignKey: 'id_pet', allowNull: false });
+
+Appointments.belongsTo(Veterinarians, { foreignKey: 'id_veterinarian', allowNull: false });
+Veterinarians.hasMany(Appointments, { foreignKey: 'id_veterinarian', allowNull: false });
 
 module.exports = Appointments;
