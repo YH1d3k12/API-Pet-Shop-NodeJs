@@ -23,6 +23,7 @@ class VeterinarianRepository {
     async CreateVeterinarian(data, transaction) {
         Veterinarians.create(
             {
+                id_user: data.id_user,
                 name: data.name,
                 created_at: new Date()
             },
