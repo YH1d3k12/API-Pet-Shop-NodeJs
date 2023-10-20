@@ -10,7 +10,7 @@ class ClientServices {
     async GetClients() {
         const clients = repositories.GetClients();
         return clients;
-    }
+    };
 
 
     async GetClientById(id, transaction) {
@@ -18,7 +18,7 @@ class ClientServices {
 
         const client = repositories.GetClientById(id, transaction);
         return client;
-    }
+    };
 
 
     async CreateClient(data, transaction) {
@@ -26,13 +26,13 @@ class ClientServices {
 
         const result = repositories.CreateClient(data, transaction);
         return result;
-    }
+    };
 
 
     async UpdateClient(id, data, transaction) {
         const result = repositories.UpdateClient(id, data, transaction);
         return result;
-    }
+    };
 
 
     async DeleteClient(id, transaction) {
@@ -40,8 +40,13 @@ class ClientServices {
 
         const result = repositories.DeleteClient(id, transaction);
         return result;
-    }
-}
+    };
+
+
+    async FindUserByEmail(email) {
+        return repositories.FindUserByEmail(email);
+    };
+};
 
 
 module.exports = ClientServices;
