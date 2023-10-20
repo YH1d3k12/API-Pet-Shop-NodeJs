@@ -1,6 +1,9 @@
 const { DataTypes } = require('sequelize');
+
 const db = require('../database/database.js');
+
 const Clients = require('./clients.js');
+
 
 const Pets = db.define('pets', {
     id: {
@@ -8,7 +11,7 @@ const Pets = db.define('pets', {
         primaryKey: true,
         autoIncrement: true,
     },
-    idClient: {
+    id_client: {
         field: 'id_client',
         type: DataTypes.INTEGER,
         references: {
@@ -16,7 +19,7 @@ const Pets = db.define('pets', {
             key: 'id'
         }
     },
-    name: { 
+    name: {
         type: DataTypes.STRING(150),
         allowNull: false
     },
@@ -24,15 +27,16 @@ const Pets = db.define('pets', {
         type: DataTypes.STRING(400),
         allowNull: false
     },
-    createdAt: {
+    created_at: {
         field: 'created_at',
         type: DataTypes.DATE,
         allowNull: false
     },
-    updatedAt: {
+    updated_at: {
         field: 'updated_at',
         type: DataTypes.DATE
-    }
+    },
 }, {});
+
 
 module.exports = Pets;

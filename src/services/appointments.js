@@ -5,24 +5,23 @@ const verify = new DataValidation();
 
 const repositories = new AppointmentRepository();
 
-class AppointmentServices
-{
-    async GetAppointments()
-    {
-        const appointments = repositories.GetAppointments(); 
+
+class AppointmentServices {
+    async GetAppointments() {
+        const appointments = repositories.GetAppointments();
         return appointments;
     }
 
-    async GetAppointmentById(id, transaction)
-    {
+
+    async GetAppointmentById(id, transaction) {
         verify.isIdValid(id);
 
-        const appointment = repositories.GetAppointmentById(id, transaction); 
+        const appointment = repositories.GetAppointmentById(id, transaction);
         return appointment;
     }
 
-    async CreateAppointment(data, transaction)
-    {
+
+    async CreateAppointment(data, transaction) {
         verify.isIdValid(data.id_veterinarian, data.id_pet);
         verify.isItEmpty(data.id_veterinarian, data.id_pet, data.is_finished, data.time);
 
@@ -30,21 +29,22 @@ class AppointmentServices
         return result;
     }
 
-    async UpdateAppointment(id, data, transaction)
-    {
+
+    async UpdateAppointment(id, data, transaction) {
         verify.isIdValid(id);
 
         const result = repositories.UpdateAppointment(id, data, transaction);
         return result;
     }
 
-    async DeleteAppointment(id, transaction)
-    {
+
+    async DeleteAppointment(id, transaction) {
         verify.isIdValid(id);
 
         const result = repositories.DeleteAppointment(id, transaction);
         return result;
     }
 }
+
 
 module.exports = AppointmentServices;

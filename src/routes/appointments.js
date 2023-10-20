@@ -1,4 +1,5 @@
 const express = require('express');
+
 const AppointmentController = require('../controllers/appointments.js');
 
 const controller = new AppointmentController();
