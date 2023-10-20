@@ -52,6 +52,15 @@ class UserRepository {
             { transaction }
         );
     };
+
+
+    async FindUserByEmail(email) {
+        return Users.findOne({
+            where: {
+                email: email
+            }
+        });
+    };
 };
 
 
