@@ -46,4 +46,5 @@ Clients.hasMany(Pets, { foreignKey: 'id_client' });
 Users.hasOne(Clients, { foreignKey: 'id_client', allowNull: false });
 Clients.hasOne(Users, { foreignKey: 'id_client', allowNull: false });
 
+
 module.exports = Clients;

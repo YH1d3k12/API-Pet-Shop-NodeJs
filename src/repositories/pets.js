@@ -1,27 +1,26 @@
 const Pets = require('../models/pets.js');
 
-class PetRepository
-{
-    async GetPets()
-    {
+
+class PetRepository {
+    async GetPets() {
         const pets = Pets.findAll();
         return pets;
     };
 
-    async GetPetById(id, transaction)
-    {
+
+    async GetPetById(id, transaction) {
         const pet = Pets.findOne(
             {
-                where: {id},
+                where: { id },
                 include: ['client'],
             },
-            {transaction}
+            { transaction }
         );
         return pet;
     };
 
-    async CreatePet(data, transaction)
-    {
+
+    async CreatePet(data, transaction) {
         Pets.create(
             {
                 name: data.name,
@@ -29,31 +28,32 @@ class PetRepository
                 id_client: data.id_client,
                 created_at: new Date(),
             },
-            {transaction}
-        );          
+            { transaction }
+        );
     };
 
-    async UpdatePet(id, data, transaction)
-    {
+
+    async UpdatePet(id, data, transaction) {
         Pets.update(
             {
                 name: data.name,
                 description: data.description,
                 id_client: data.id_client,
                 updated_at: new Date().toLocaleString()
-            }, 
-            {where: {id}},
-            {transaction}
+            },
+            { where: { id } },
+            { transaction }
         );
     };
-    
-    async DeletePet(id, transaction)
-    {
+
+
+    async DeletePet(id, transaction) {
         Pets.destroy(
-            {where: {id}},
-            {transaction}
-        );          
+            { where: { id } },
+            { transaction }
+        );
     };
 };
+
 
 module.exports = PetRepository;

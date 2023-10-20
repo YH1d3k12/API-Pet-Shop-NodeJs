@@ -2,6 +2,13 @@ const { DataTypes } = require('sequelize');
 
 const db = require('../database/database.js');
 
+/*
+ Roles:
+    0 - Admin
+    1 - Manager
+    2 - Veterinarian
+    3 - Client
+*/
 
 const Users = db.define('clients', {
     id: {

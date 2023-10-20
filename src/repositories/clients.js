@@ -1,58 +1,58 @@
 const Clients = require('../models/clients.js');
 
-class ClientRepository
-{
-    async GetClients()
-    {
+
+class ClientRepository {
+    async GetClients() {
         const clients = Clients.findAll();
         return clients;
     };
 
-    async GetClientById(id, transaction)
-    {
+
+    async GetClientById(id, transaction) {
         const client = Clients.findOne(
             {
-                where: {id},
+                where: { id },
                 include: ['pets'],
             },
-            {transaction}
+            { transaction }
         );
 
         return client;
     };
 
-    async CreateClient(data, transaction)
-    {
+
+    async CreateClient(data, transaction) {
         Clients.create(
             {
                 name: data.name,
                 phone: data.phone,
                 created_at: new Date()
-            }, 
-            {transaction}
-        );          
+            },
+            { transaction }
+        );
     };
 
-    async UpdateClient(id, data, transaction)
-    {
+
+    async UpdateClient(id, data, transaction) {
         Clients.update(
             {
                 name: data.name,
                 phone: data.phone,
                 updated_at: new Date().toLocaleString()
-            }, 
-            {where: {id}},
-            {transaction}
+            },
+            { where: { id } },
+            { transaction }
         );
     };
-    
-    async DeleteClient(id, transaction)
-    {
+
+
+    async DeleteClient(id, transaction) {
         Clients.destroy(
-            {where: {id}},
-            {transaction}
-        );          
+            { where: { id } },
+            { transaction }
+        );
     };
 };
+
 
 module.exports = ClientRepository;

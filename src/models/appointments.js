@@ -54,4 +54,5 @@ Pets.hasMany(Appointments, { foreignKey: 'id_pet', allowNull: false });
 Appointments.belongsTo(Veterinarians, { foreignKey: 'id_veterinarian', allowNull: false });
 Veterinarians.hasMany(Appointments, { foreignKey: 'id_veterinarian', allowNull: false });
 
+
 module.exports = Appointments;

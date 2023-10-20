@@ -1,5 +1,6 @@
 const Appointments = require('../models/appointments.js');
 
+
 class AppointmentRepository {
     async GetAppointments() {
         const appointments = Appointments.findAll();
@@ -56,5 +57,6 @@ class AppointmentRepository {
         );
     };
 };
+
 
 module.exports = AppointmentRepository;
