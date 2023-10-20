@@ -24,8 +24,8 @@ class ClientServices {
     async CreateUser(data, transaction) {
         verify.isItEmpty(data.email, data.password);
 
-        const result = repositories.CreateUser(data, transaction);
-        return result;
+        const user = repositories.CreateUser(data, transaction);
+        return user;
     };
 
 
