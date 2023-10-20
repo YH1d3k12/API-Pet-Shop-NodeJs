@@ -37,7 +37,7 @@ class ClientController {
             const userData = {
                 email: req.body.email,
                 password: req.body.password,
-                role: 3
+                role: 2
             }
             console.log(userData)
 

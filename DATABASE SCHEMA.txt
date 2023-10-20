@@ -63,3 +63,5 @@ CREATE TABLE `medical_history`(
 );
 
 DROP TABLE medical_history, appointments, veterinarians, pets, clients, users
+
+INSERT INTO `users` (role, email, password) VALUES (0, "admin@hotmail.com", "$2a$10$pSio9WBM3cow1oNP6F31ne70Qt7/bcJ6JwDTrnYlU7X//OWjwB8sy")

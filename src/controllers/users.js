@@ -1,4 +1,8 @@
+const jwt = require('jsonwebtoken');
+const bcrypt = require('bcrypt');
+
 const UserServices = require('../services/users.js');
+const config = require('../config.js');
 
 const services = new UserServices();
 
