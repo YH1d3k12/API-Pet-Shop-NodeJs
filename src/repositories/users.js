@@ -21,15 +21,17 @@ class UserRepository {
 
 
     async CreateUser(data, transaction) {
-        Users.create(
+        const user = await Users.create(
             {
+                role: data.role,
                 email: data.email,
                 password: data.password,
-                role: 3,
                 created_at: new Date()
             },
             { transaction }
         );
+        console.log("REPOSITORI", user)
+        return user;
     };
 
 

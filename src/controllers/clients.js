@@ -1,6 +1,8 @@
 const ClientServices = require('../services/clients.js');
+const UserServices = require('../services/users.js');
 
 const services = new ClientServices();
+const userServices = new UserServices();
 
 
 class ClientController {
@@ -32,12 +34,23 @@ class ClientController {
 
     async CreateClient(req, res) {
         try {
-            const data = {
+            const userData = {
+                email: req.body.email,
+                password: req.body.password,
+                role: 3
+            }
+            console.log(userData)
+
+            const user = await userServices.CreateUser(userData);
+
+            const clientData = {
+                id_user: user.id,
                 name: req.body.name,
                 phone: req.body.phone
             }
+            console.log(clientData)
 
-            const result = await services.CreateClient(data);
+            const result = await services.CreateClient(clientData);
 
             res.status(201).json(result);
         }

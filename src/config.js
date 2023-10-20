@@ -9,7 +9,8 @@ module.exports = {
         host: process.env.HOST,
         dialect: process.env.DIALET,
         define: {
-            underscored: true
+            underscored: true,
+            timestamps: false
         }
     },
     secret: process.env.SECRET

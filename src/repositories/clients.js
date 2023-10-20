@@ -1,5 +1,6 @@
 const Clients = require('../models/clients.js');
-
+const Users = require('../models/users.js');
+const Pets = require('../models/pets.js');
 
 class ClientRepository {
     async GetClients() {
@@ -12,7 +13,14 @@ class ClientRepository {
         const client = Clients.findOne(
             {
                 where: { id },
-                include: ['pets'],
+                include: [
+                    {
+                        model: Users
+                    },
+                    {
+                        model: Pets
+                    },
+                ],
             },
             { transaction }
         );
@@ -24,6 +32,7 @@ class ClientRepository {
     async CreateClient(data, transaction) {
         Clients.create(
             {
+                id_user: data.id_user,
                 name: data.name,
                 phone: data.phone,
                 created_at: new Date()
