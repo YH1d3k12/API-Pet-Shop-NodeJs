@@ -2,7 +2,7 @@ const { DataTypes } = require('sequelize');
 
 const db = require('../database/database.js');
 
-const Users = require('./user.js');
+const Users = require('./users.js');
 const Pets = require('./pets.js');
 
 
@@ -43,8 +43,7 @@ const Clients = db.define('clients', {
 Pets.belongsTo(Clients, { foreignKey: 'id_client', allowNull: false });
 Clients.hasMany(Pets, { foreignKey: 'id_client' });
 
-Users.hasOne(Clients, { foreignKey: 'id_client', allowNull: false });
-Clients.hasOne(Users, { foreignKey: 'id_client', allowNull: false });
+Clients.belongsTo(Users, { foreignKey: 'id_user', allowNull: false });
 
 
 module.exports = Clients;

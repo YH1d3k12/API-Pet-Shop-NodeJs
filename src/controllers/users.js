@@ -1,4 +1,4 @@
-const UserServices = require('../services/clients.js');
+const UserServices = require('../services/users.js');
 
 const services = new UserServices();
 

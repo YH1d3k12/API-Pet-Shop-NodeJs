@@ -2,6 +2,8 @@ const { DataTypes } = require('sequelize');
 
 const db = require('../database/database.js');
 
+const Users = require('./users.js');
+
 
 const Veterinarians = db.define('veterinarians', {
     id: {
@@ -23,6 +25,8 @@ const Veterinarians = db.define('veterinarians', {
         type: DataTypes.DATE
     },
 }, {});
+
+Veterinarians.belongsTo(Users, { foreignKey: 'id_user', allowNull: false });
 
 
 module.exports = Veterinarians;

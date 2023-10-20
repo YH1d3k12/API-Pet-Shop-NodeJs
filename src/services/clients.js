@@ -41,11 +41,6 @@ class ClientServices {
         const result = repositories.DeleteClient(id, transaction);
         return result;
     };
-
-
-    async FindUserByEmail(email) {
-        return repositories.FindUserByEmail(email);
-    };
 };
 
 

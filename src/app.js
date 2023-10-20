@@ -1,6 +1,7 @@
 const express = require('express'); // Import the Express library
 const cors = require('cors'); // Import the cors package
 
+const users = require('./routes/users.js');
 const clients = require('./routes/clients.js');
 const pets = require('./routes/pets.js');
 const veterinarians = require('./routes/veterinarians.js');
@@ -15,6 +16,7 @@ app.use(express.json());
 // This allows other ports to send requests
 app.use(cors());
 
+app.use('/users', users);
 app.use('/clients', clients);
 app.use('/pets', pets);
 app.use('/veterinarians', veterinarians);

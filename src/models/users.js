@@ -10,7 +10,7 @@ const db = require('../database/database.js');
     3 - Client
 */
 
-const Users = db.define('clients', {
+const Users = db.define('users', {
     id: {
         type: DataTypes.INTEGER,
         primaryKey: true,
@@ -28,12 +28,12 @@ const Users = db.define('clients', {
         type: DataTypes.STRING(255),
         allowNull: false
     },
-    createdAt: {
+    created_at: {
         field: 'created_at',
         type: DataTypes.DATE,
         allowNull: false
     },
-    updatedAt: {
+    updated_at: {
         field: 'updated_at',
         type: DataTypes.DATE
     },
