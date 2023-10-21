@@ -26,7 +26,7 @@ function authMiddleware(permission) {
                 return next();
             }
 
-            if ((role !== permission)) {
+            if (role !== permission && permission !== null) {
                 return res.status(401).json({ message: 'Unauthorized' });
             }
 
